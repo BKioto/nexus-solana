@@ -1,0 +1,27 @@
+{
+  "name": "نکسوس | ساخت توکن و میم کوین سولانا با مناسب ترین قیمت",
+  "short_name": "Nexus",
+  "description": "اولین پلتفرم ساخت ارز دیجیتال روی شبکه سولانا با پشتیبانی کامل فارسی و عربی.",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#0B0F19",
+  "theme_color": "#0B0F19",
+  "icons": [
+    {
+      "src": "/icon.svg",
+      "sizes": "any",
+      "type": "image/svg+xml",
+      "purpose": "any maskable"
+    },
+    {
+      "src": "/icon.png",
+      "sizes": "192x192",
+      "type": "image/png"
+    },
+    {
+      "src": "/icon-512.png",
+      "sizes": "512x512",
+      "type": "image/png"
+    }
+  ]
+}
