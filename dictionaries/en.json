@@ -1,0 +1,147 @@
+{
+  "metadata": {
+    "title": "Nexus Solana | Solana Token Creator & Meme Coin Generator",
+    "description": "The premier no-code platform to mint assets on the Solana Blockchain. Create your token instantly."
+  },
+  "navbar": {
+    "title": "Nexus Solana",
+    "subtitle": "NEXUS SOLANA",
+    "connect_btn": "Connect Wallet"
+  },
+  "hero": {
+    "title_highlight": "Nexus Mint Factory",
+    "description": "The first No-Code Token Creator on the Solana Network.",
+    "tag_fast": "Fast ⚡",
+    "tag_cheap": "Cheap 💎",
+    "tag_nocode": "No-Code 💻"
+  },
+  "token_form": {
+    "title": "Token Metadata",
+    "subtitle": "This information will be permanently stored on the blockchain.",
+    "label_logo": "Token Logo",
+    "upload_placeholder_title": "Select Image",
+    "upload_placeholder_desc": "Format: PNG or JPG (Square, < 1MB)",
+    "label_name": "Token Name",
+    "placeholder_name": "Example: Solana Nexus",
+    "helper_name": "Full name of the asset (e.g. Bitcoin). Use English characters for best compatibility.",
+    "label_symbol": "Symbol",
+    "placeholder_symbol": "NEX",
+    "helper_symbol": "Ticker abbreviation (e.g. BTC).\nSymbols on Solana are not unique.",
+    "label_supply": "Supply",
+    "placeholder_supply": "1000000000",
+    "helper_supply": "Total number of tokens to mint (Recommended: 1 Billion).",
+    "unit": "Tokens",
+    "cost_label": "Service Fee:",
+    "cost_value": "0.02 SOL",
+    "btn_create": "Mint Token 🚀",
+    "btn_processing": "Processing...",
+    "status": {
+      "connect_wallet": "❌ Please connect your wallet first.",
+      "fill_all": "⚠️ Please fill all fields (Name, Symbol, Supply, and Logo).",
+      "uploading": "📤 Uploading logo to global IPFS servers...",
+      "creating_metadata": "📝 Generating token digital identity (Metadata)...",
+      "confirm_wallet": "⏳ Please confirm the transaction in your wallet...",
+      "success_title": "✅ Congratulations! Token minted successfully!",
+      "success_addr": "Mint Address:",
+      "success_wait": "(Please wait a few minutes for the image to propagate)",
+      "error_prefix": "❌ Error:"
+    }
+  },
+  "content": {
+    "intro": {
+      "title_prefix": "We are",
+      "title_gradient": "Nexus Solana",
+      "title_suffix": ".",
+      "subtitle": "The end of expensive coding.",
+      "paragraph_1": "Blockchain shouldn't be exclusive to developers. Until yesterday, launching a token on Solana required Rust expertise or paying thousands to devs. We broke that barrier.",
+      "paragraph_2": "<strong>Nexus Solana</strong> is a No-Code platform that lets you Mint your own SPL token in less than 1 minute. Our mission is to democratize access to Web3 for everyone, regardless of technical skill."
+    },
+    "stats": {
+      "stat_1_value": "100%",
+      "stat_1_label": "Full Ownership",
+      "stat_2_value": "<1 min",
+      "stat_2_label": "Mint Time",
+      "stat_3_value": "Low",
+      "stat_3_label": "Competitive Fees",
+      "stat_4_value": "SPL",
+      "stat_4_label": "Global Standard"
+    },
+    "use_cases": {
+      "badge": "Real World Use Cases",
+      "title": "What can you build?",
+      "description": "A token is not just currency; it's a tool for building communities, wealth, and utility.",
+      "card_1_title": "Meme Coin",
+      "card_1_desc": "The most popular trend! Like <strong>BONK</strong> or <strong>WIF</strong>. You can create a token for fun, a Telegram community, or just a joke. If a community forms around it, the value can skyrocket.",
+      "card_2_title": "Utility Token",
+      "card_2_desc": "For serious projects. Use it for in-game currency, subscription access, or DAO governance. These tokens have technical or service-based backing.",
+      "card_3_title": "Loyalty Points",
+      "card_3_desc": "Replace paper cards! Give tokens to your customers. They can collect, trade, or redeem them for services."
+    },
+    "features": {
+      "title": "Why Nexus Solana?",
+      "item_1_title": "Ultra Low Cost",
+      "item_1_desc": "Only 0.02 SOL service fee. Compare that to $500+ for hiring a developer.",
+      "item_2_title": "Full Security",
+      "item_2_desc": "We are non-custodial. We never access your Private Keys. You sign every transaction yourself.",
+      "item_3_title": "No-Code Required",
+      "item_3_desc": "Simple, visual interface. You don't need to know a single line of code.",
+      "item_4_title": "Lightning Speed",
+      "item_4_desc": "Powered by the Solana network, your token is minted in milliseconds."
+    },
+    "faq": {
+      "title": "Frequently Asked Questions",
+      "subtitle": "Everything you need to know.",
+      "items": [
+        {
+          "question": "Is there a cost to mint?",
+          "answer": "Yes, but it's minimal. The Solana network charges a small 'Rent' fee to store your data. Additionally, Nexus charges a flat 0.02 SOL service fee. Total required: ~0.03-0.04 SOL."
+        },
+        {
+          "question": "Are these real tokens?",
+          "answer": "Yes, 100%. You are minting official SPL Tokens on the Solana Blockchain. <br/><br/> <strong>Important:</strong> For your token to have a price, you must list it on a DEX like <strong>Raydium</strong> and add Liquidity after minting."
+        },
+        {
+          "question": "I'm a beginner. How do I start?",
+          "answer": "1. Install Phantom Wallet. 2. Buy some SOL. 3. Connect your wallet here. 4. Fill the form and click Mint. Done!"
+        },
+        {
+          "question": "Do you have access to my wallet?",
+          "answer": "No. Nexus is a decentralized application (Dapp). We don't have a database and cannot access your funds or keys. Transactions happen directly between you and the blockchain."
+        },
+        {
+          "question": "Where is the image stored?",
+          "answer": "Your token image is permanently stored on IPFS (InterPlanetary File System) via Pinata. It cannot be deleted or censored."
+        },
+        {
+          "question": "Who controls the Authority?",
+          "answer": "You do. By default, both Mint and Freeze Authorities are assigned to your wallet. You have absolute ownership. You can Revoke these authorities later if needed."
+        },
+        {
+          "question": "Why Solana instead of Ethereum?",
+          "answer": "Speed and Cost. Minting on Ethereum can cost $50+. On Solana, it's cents. This is why Solana is the home of Meme Coins."
+        },
+        {
+          "question": "How do I list on Raydium?",
+          "answer": "After minting here, go to Raydium.io -> Liquidity -> Create Pool. Select your token and pair it with SOL (e.g., 100M tokens + 5 SOL). This creates a market for people to buy."
+        },
+        {
+          "question": "Can I update the name/image later?",
+          "answer": "Yes. Nexus tokens adhere to the Metaplex standard with `isMutable: true`. You can update metadata using token management tools, as long as you haven't revoked the update authority."
+        },
+        {
+          "question": "Are there geographic restrictions?",
+          "answer": "No. The blockchain knows no borders. Your wallet is your identity. Nexus is available to everyone, globally."
+        }
+      ]
+    },
+    "footer": {
+      "cta_title": "Ready to build your empire?",
+      "cta_desc": "Opportunities don't wait. Mint your first token now and join the crypto revolution.",
+      "cta_btn": "Start Minting 🚀",
+      "telegram_btn": "Telegram Support",
+      "telegram_desc": "Need help? Contact <span class=\"text-[#229ED9] dir-ltr font-mono\">@Kioto_Osano</span>",
+      "copyright": "© 2025 Nexus Solana. All rights reserved.",
+      "tagline": "Built for the future of Finance."
+    }
+  }
+}

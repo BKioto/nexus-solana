@@ -38,6 +38,11 @@ export default function Navbar({ dict, lang }: NavbarProps) {
       label: 'العربية', 
       flagUrl: 'https://flagcdn.com/w40/sa.png' // پرچم عربستان
     },
+    { 
+      code: 'en', 
+      label: 'English', 
+      flagUrl: 'https://flagcdn.com/w40/us.png' // پرچم آمریکا (نماد بین‌المللی)
+    },
   ];
 
   // پیدا کردن زبان فعلی برای نمایش در دکمه اصلی
@@ -65,7 +70,7 @@ export default function Navbar({ dict, lang }: NavbarProps) {
        return;
     }
 
-    segments[1] = targetLangCode; // fa یا ar را عوض می‌کند
+    segments[1] = targetLangCode; // fa یا ar یا en را عوض می‌کند
     const newPath = segments.join('/');
     
     setIsOpen(false);
