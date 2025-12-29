@@ -1,0 +1,147 @@
+{
+  "metadata": {
+    "title": "Nexus Solana | Solana Token Oluşturucu & Meme Coin",
+    "description": "Solana Ağında kodlama bilmeden token oluşturabileceğiniz ilk platform. Kendi tokenınızı saniyeler içinde basın."
+  },
+  "navbar": {
+    "title": "Nexus Solana",
+    "subtitle": "NEXUS SOLANA",
+    "connect_btn": "Cüzdanı Bağla"
+  },
+  "hero": {
+    "title_highlight": "Nexus Mint Fabrikası",
+    "description": "Solana Ağındaki İlk Kodsuz (No-Code) Token Oluşturma Platformu.",
+    "tag_fast": "Hızlı ⚡",
+    "tag_cheap": "Ucuz 💎",
+    "tag_nocode": "Kodlama Yok 💻"
+  },
+  "token_form": {
+    "title": "Token Bilgileri",
+    "subtitle": "Bu bilgiler blok zincirine kalıcı olarak kaydedilecektir.",
+    "label_logo": "Token Logosu",
+    "upload_placeholder_title": "Resim Seç",
+    "upload_placeholder_desc": "Format: PNG veya JPG (Kare ve 1 MB altı)",
+    "label_name": "Token Adı (Name)",
+    "placeholder_name": "Örnek: Solana Nexus",
+    "helper_name": "Tokenın tam adı (Örn: Bitcoin). En iyi uyumluluk için İngilizce karakterler kullanın.",
+    "label_symbol": "Sembol (Ticker)",
+    "placeholder_symbol": "NEX",
+    "helper_symbol": "Kısaltma (Örn: BTC).\nSolana'da semboller benzersiz değildir.",
+    "label_supply": "Arz (Supply)",
+    "placeholder_supply": "1000000000",
+    "helper_supply": "Toplam üretilecek token sayısı (Önerilen: 1 Milyar).",
+    "unit": "Adet",
+    "cost_label": "Sabit Servis Ücreti:",
+    "cost_value": "0.02 SOL",
+    "btn_create": "Token Oluştur 🚀",
+    "btn_processing": "İşleniyor...",
+    "status": {
+      "connect_wallet": "❌ Lütfen önce cüzdanınızı bağlayın.",
+      "fill_all": "⚠️ Lütfen tüm alanları doldurun (Ad, Sembol, Arz ve Logo).",
+      "uploading": "📤 Logo küresel IPFS sunucularına yükleniyor...",
+      "creating_metadata": "📝 Token dijital kimliği (Metadata) oluşturuluyor...",
+      "confirm_wallet": "⏳ Lütfen cüzdanınızdaki işlemi onaylayın...",
+      "success_title": "✅ Tebrikler! Token başarıyla oluşturuldu!",
+      "success_addr": "Mint Adresi:",
+      "success_wait": "(Resmin cüzdanda görünmesi birkaç dakika sürebilir)",
+      "error_prefix": "❌ İşlem Hatası:"
+    }
+  },
+  "content": {
+    "intro": {
+      "title_prefix": "Biz",
+      "title_gradient": "Nexus Solana",
+      "title_suffix": "'yız.",
+      "subtitle": "Pahalı kodlama devrinin sonu.",
+      "paragraph_1": "Blok zinciri sadece yazılımcıların tekelinde olmamalı. Düne kadar Solana ağında bir token oluşturmak için Rust dilini bilmeniz veya geliştiricilere binlerce dolar ödemeniz gerekiyordu. Biz bu engeli yıktık.",
+      "paragraph_2": "<strong>Nexus Solana</strong>, 1 dakikadan kısa sürede Solana ağında kendi SPL tokenınızı basmanızı (Mint) sağlayan bir \"Kodsuz\" (No-Code) platformdur. Amacımız, teknik bilgisi ne olursa olsun herkesin Web3 dünyasına erişimini sağlamaktır."
+    },
+    "stats": {
+      "stat_1_value": "%100",
+      "stat_1_label": "Tam Sahiplik",
+      "stat_2_value": "<1 dk",
+      "stat_2_label": "Oluşturma Süresi",
+      "stat_3_value": "Düşük",
+      "stat_3_label": "Rekabetçi Ücret",
+      "stat_4_value": "SPL",
+      "stat_4_label": "Küresel Standart"
+    },
+    "use_cases": {
+      "badge": "Gerçek Kullanım Alanları",
+      "title": "Kendi tokenınızla neler yapabilirsiniz?",
+      "description": "Token sadece bir \"para\" değildir; topluluk, servet ve eğlence inşa etmek için bir araçtır.",
+      "card_1_title": "Meme Coin",
+      "card_1_desc": "Şu anın en popüler trendi! <strong>BONK</strong> veya <strong>WIF</strong> gibi. Şaka amaçlı, bir Telegram grubu veya evcil hayvanınız için bir token oluşturabilirsiniz. Eğer arkasında bir topluluk oluşursa, değeri binlerce kat artabilir.",
+      "card_2_title": "Utility Token",
+      "card_2_desc": "Ciddi projeler için. Bir oyun içi para birimi, site aboneliği veya DAO yönetimi için kullanın. Bu tokenların teknik veya hizmet tabanlı bir karşılığı vardır.",
+      "card_3_title": "Sadakat Puanları",
+      "card_3_desc": "Kağıt kartların yerine geçin! Müşterilerinize token verin. Bunları toplayabilir, takas edebilir veya ücretsiz hizmetler için harcayabilirler."
+    },
+    "features": {
+      "title": "Neden Nexus Solana?",
+      "item_1_title": "Çok Düşük Maliyet",
+      "item_1_desc": "Sadece 0.02 SOL servis ücreti. Bir geliştirici kiralamak için gereken 500$+ ile karşılaştırın.",
+      "item_2_title": "Tam Güvenlik",
+      "item_2_desc": "Özel Anahtarlarınıza (Private Key) asla erişmeyiz. Her işlemi kendi cüzdanınızla imzalarsınız.",
+      "item_3_title": "Kodlama Yok",
+      "item_3_desc": "Basit, görsel arayüz. Tek bir satır kod bilmenize gerek yok.",
+      "item_4_title": "Işık Hızı",
+      "item_4_desc": "Güçlü Solana ağı sayesinde tokenınız milisaniyeler içinde oluşturulur."
+    },
+    "faq": {
+      "title": "Sıkça Sorulan Sorular",
+      "subtitle": "Aklınızdaki tüm soruların cevapları.",
+      "items": [
+        {
+          "question": "Token oluşturmanın bir maliyeti var mı?",
+          "answer": "Evet, ancak çok düşük. Solana ağı, verilerinizi ve resminizi saklamak için küçük bir 'Kira' (Rent) ücreti alır. Ek olarak, Nexus sabit 0.02 SOL servis ücreti alır. Toplamda cüzdanınızda yaklaşık 0.03-0.04 SOL olması gerekir."
+        },
+        {
+          "question": "Bu tokenlar gerçek mi ve satılabilir mi?",
+          "answer": "Evet, %100 gerçek. Burada oluşturduğunuz tokenlar resmi Solana SPL Token standardına uygundur. Borsalarda gördüğünüz coinlerle aynıdır. <br/><br/> <strong>Önemli Not:</strong> Tokenınızın bir fiyatı olması için, oluşturduktan sonra <strong>Raydium</strong> gibi bir DEX'te listelemeniz ve Likidite (Liquidity) eklemeniz gerekir."
+        },
+        {
+          "question": "Hiçbir şey bilmiyorum, nereden başlamalıyım?",
+          "answer": "Çok basit: 1. Phantom Cüzdanı yükleyin. 2. Biraz SOL satın alıp cüzdana atın. 3. Bu sitedeki Cüzdanı Bağla butonuna basın. 4. Formu doldurun ve Oluştur'a tıklayın. Bitti!"
+        },
+        {
+          "question": "Cüzdanıma erişiminiz var mı?",
+          "answer": "Hayır. Nexus merkeziyetsiz bir uygulamadır (Dapp). Kullanıcı veritabanımız yoktur ve fonlarınıza veya şifrenize erişemeyiz. İşlemler doğrudan tarayıcınız ve Solana ağı arasında gerçekleşir."
+        },
+        {
+          "question": "Resim oluşturulduktan sonra nereye gidiyor?",
+          "answer": "Token resminiz, Pinata servisi aracılığıyla merkeziyetsiz bulut depolama sistemi IPFS'de kalıcı olarak saklanır. Bu, kimsenin resminizi silemeyeceği veya değiştiremeyeceği anlamına gelir."
+        },
+        {
+          "question": "Yetki (Authority) kimde?",
+          "answer": "Sizde. Nexus'ta, tüm yönetim yetkileri (Mint ve Freeze Authority) varsayılan olarak sizin cüzdan adresinize tanımlanır. Tokenın mutlak sahibi sizsiniz. İsterseniz güven kazanmak için bu yetkileri daha sonra yakabilirsiniz (Revoke)."
+        },
+        {
+          "question": "Neden Ethereum değil de Solana?",
+          "answer": "Hız ve Maliyet. Ethereum'da token oluşturmak 50 doları bulabilir, Solana'da ise sadece birkaç senttir. Bu yüzden Meme Coin'ler Solana'da patlama yapmıştır."
+        },
+        {
+          "question": "Tokenımı Raydium'da nasıl listelerim?",
+          "answer": "Tokenı Nexus'ta oluşturduktan sonra Raydium.io adresine gidin. Liquidity bölümünden 'Create Pool' seçeneğini seçin. Tokenınızı seçin ve karşılığına bir miktar SOL koyun (Örn: 100 Milyon Token + 5 SOL). Böylece tokenınız için bir pazar oluşur."
+        },
+        {
+          "question": "İsmi veya resmi sonradan değiştirebilir miyim?",
+          "answer": "Evet, Nexus tokenları Metaplex standardı ve `isMutable: true` özelliği ile oluşturulur. Düzenleme yetkisini yakmadığınız sürece, token yönetim araçlarını kullanarak meta verileri güncelleyebilirsiniz."
+        },
+        {
+          "question": "Coğrafi kısıtlama var mı?",
+          "answer": "Hayır. Blok zinciri sınır tanımaz. Cüzdanınız sizin kimliğinizdir. Nexus, Türkiye dahil tüm dünyada kısıtlamasız kullanılabilir."
+        }
+      ]
+    },
+    "footer": {
+      "cta_title": "İmparatorluğunu kurmaya hazır mısın?",
+      "cta_desc": "Fırsatlar beklemez. İlk tokenını şimdi oluştur ve milyar dolarlık kripto dünyasına adım at.",
+      "cta_btn": "Token Oluşturmaya Başla 🚀",
+      "telegram_btn": "Telegram Destek",
+      "telegram_desc": "Yardıma mı ihtiyacın var? <span class=\"text-[#229ED9] dir-ltr font-mono\">@Kioto_Osano</span> ile iletişime geç.",
+      "copyright": "© 2025 Nexus Solana. Tüm hakları saklıdır.",
+      "tagline": "Finansın geleceği için inşa edildi."
+    }
+  }
+}

@@ -3,13 +3,13 @@ import type { Locale } from '@/i18n-config';
 
 // تعریف مسیر فایل‌های دیکشنری برای هر زبان
 const dictionaries = {
-  // زبان‌های فعال (فارسی، عربی، انگلیسی)
+  // زبان‌های فعال (فارسی، عربی، انگلیسی، ترکی)
   fa: () => import('@/dictionaries/fa.json').then((module) => module.default),
   ar: () => import('@/dictionaries/ar.json').then((module) => module.default),
-  en: () => import('@/dictionaries/en.json').then((module) => module.default), // ✅ انگلیسی فعال شد و فایل خودش را می‌خواند
+  en: () => import('@/dictionaries/en.json').then((module) => module.default),
+  tr: () => import('@/dictionaries/tr.json').then((module) => module.default), // ✅ ترکی فعال شد
   
-  // زبان‌های رزرو (فعلاً فارسی لود می‌کنند تا بعداً پر کنیم)
-  tr: () => import('@/dictionaries/fa.json').then((module) => module.default),
+  // زبان‌های رزرو (فعلاً فارسی لود می‌شود)
   pt: () => import('@/dictionaries/fa.json').then((module) => module.default),
 };
 
