@@ -22,8 +22,8 @@ export default function Home() {
     "@type": "WebApplication",
     "name": "Nexus Solana Token Creator",
     "alternateName": ["نکسوس سولانا", "توکن ساز سولانا"],
-    // 👇👇 آدرس دقیق و جدید سایت (Sand) 👇👇
-    "url": "https://nexus-solana-sand.vercel.app",
+    // 👇👇 آدرس دقیق و جدید سایت (taupe) 👇👇
+    "url": "https://nexus-solana-taupe.vercel.app",
     "description": "اولین پلتفرم ساخت ارز دیجیتال و میم کوین روی شبکه سولانا بدون نیاز به کدنویسی. سریع، ارزان و امن.",
     "applicationCategory": "Blockchain Application",
     "operatingSystem": "All",

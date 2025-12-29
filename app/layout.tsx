@@ -41,8 +41,8 @@ export const metadata: Metadata = {
   openGraph: {
     type: "website",
     locale: "fa_IR",
-    // 👇👇 آدرس صحیح و نهایی (sand) 👇👇
-    url: "https://nexus-solana-sand.vercel.app", 
+    // 👇👇 آدرس صحیح و نهایی (taupe) 👇👇
+    url: "https://nexus-solana-taupe.vercel.app", 
     siteName: "Nexus Solana",
     title: "ساخت توکن سولانا در ۱ دقیقه | نکسوس",
     description: "بدون نیاز به کدنویسی، توکن خودت رو روی سولانا بساز.",
