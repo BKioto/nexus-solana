@@ -26,12 +26,18 @@ export default function Navbar({ dict, lang }: NavbarProps) {
   const [isOpen, setIsOpen] = useState(false);
   const dropdownRef = useRef<HTMLDivElement>(null);
 
-  // لیست زبان‌های فعال
+  // لیست زبان‌های فعال با لینک تصویر پرچم (از CDN سریع FlagCDN)
   const languages = [
-    { code: 'fa', label: 'فارسی', flag: '🇮🇷' },
-    { code: 'ar', label: 'العربية', flag: '🇸🇦' },
-    // در آینده زبان‌های دیگر را اینجا اضافه کن:
-    // { code: 'en', label: 'English', flag: '🇺🇸' },
+    { 
+      code: 'fa', 
+      label: 'فارسی', 
+      flagUrl: 'https://flagcdn.com/w40/ir.png' // پرچم ایران
+    },
+    { 
+      code: 'ar', 
+      label: 'العربية', 
+      flagUrl: 'https://flagcdn.com/w40/sa.png' // پرچم عربستان
+    },
   ];
 
   // پیدا کردن زبان فعلی برای نمایش در دکمه اصلی
@@ -52,6 +58,13 @@ export default function Navbar({ dict, lang }: NavbarProps) {
   const handleLanguageChange = (targetLangCode: string) => {
     if (!pathname) return;
     const segments = pathname.split('/');
+    
+    // اگر در ریشه بودیم و سگمنت زبان نداشتیم (محض احتیاط)
+    if (segments.length < 2) {
+       router.push(`/${targetLangCode}`);
+       return;
+    }
+
     segments[1] = targetLangCode; // fa یا ar را عوض می‌کند
     const newPath = segments.join('/');
     
@@ -81,15 +94,20 @@ export default function Navbar({ dict, lang }: NavbarProps) {
             </WalletMultiButtonDynamic>
         </div>
 
-        {/* ۲. دراپ‌دان تغییر زبان */}
+        {/* ۲. دراپ‌دان تغییر زبان (با عکس پرچم) */}
         <div className="relative" ref={dropdownRef}>
           <button 
             onClick={() => setIsOpen(!isOpen)}
-            className="flex items-center gap-2 bg-white/5 hover:bg-white/10 border border-white/10 px-3 h-[40px] rounded-xl transition-all min-w-[90px] justify-between"
+            className="flex items-center gap-2 bg-white/5 hover:bg-white/10 border border-white/10 px-3 h-[40px] rounded-xl transition-all min-w-[90px] justify-between group"
           >
             <div className="flex items-center gap-2">
-              <span className="text-xl">{currentLang.flag}</span>
-              <span className="text-xs font-bold text-gray-300 uppercase">{currentLang.code}</span>
+              {/* نمایش عکس پرچم */}
+              <img 
+                src={currentLang.flagUrl} 
+                alt={currentLang.code} 
+                className="w-5 h-auto rounded-sm object-cover shadow-sm"
+              />
+              <span className="text-xs font-bold text-gray-300 uppercase group-hover:text-white transition-colors">{currentLang.code}</span>
             </div>
             <ChevronDown className={`w-4 h-4 text-gray-500 transition-transform ${isOpen ? 'rotate-180' : ''}`} />
           </button>
@@ -104,7 +122,12 @@ export default function Navbar({ dict, lang }: NavbarProps) {
                   className={`w-full flex items-center justify-between px-4 py-3 hover:bg-white/5 transition-colors text-right ${lang === l.code ? 'bg-white/5' : ''}`}
                 >
                   <div className="flex items-center gap-3">
-                    <span className="text-lg">{l.flag}</span>
+                    {/* عکس پرچم در لیست */}
+                    <img 
+                      src={l.flagUrl} 
+                      alt={l.label} 
+                      className="w-5 h-auto rounded-sm object-cover shadow-sm"
+                    />
                     <span className={`text-sm ${lang === l.code ? 'text-[#14F195] font-bold' : 'text-gray-300'}`}>
                       {l.label}
                     </span>
