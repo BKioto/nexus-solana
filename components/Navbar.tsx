@@ -2,54 +2,70 @@
 
 import dynamic from "next/dynamic";
 import { usePathname, useRouter } from "next/navigation";
-import { Globe } from "lucide-react";
-import Image from "next/image";
+import { ChevronDown, Check } from "lucide-react";
+import { useState, useEffect, useRef } from "react";
 
-// رفع ارور Hydration: دکمه را به صورت داینامیک و فقط در سمت کلاینت لود می‌کنیم
+// رفع ارور Hydration: دکمه کیف پول
 const WalletMultiButtonDynamic = dynamic(
   async () => (await import('@solana/wallet-adapter-react-ui')).WalletMultiButton,
   { ssr: false }
 );
 
 interface NavbarProps {
-  // این کامپوننت حالا بخش مربوط به نوبار را از دیکشنری دریافت می‌کند
   dict: {
     title: string;
     subtitle: string;
     connect_btn: string;
   };
-  lang: string; // زبان فعلی (fa یا ar)
+  lang: string;
 }
 
 export default function Navbar({ dict, lang }: NavbarProps) {
   const pathname = usePathname();
   const router = useRouter();
+  const [isOpen, setIsOpen] = useState(false);
+  const dropdownRef = useRef<HTMLDivElement>(null);
 
-  // تابع تغییر زبان (سوییچ بین فارسی و عربی)
-  const switchLanguage = () => {
+  // لیست زبان‌های فعال
+  const languages = [
+    { code: 'fa', label: 'فارسی', flag: '🇮🇷' },
+    { code: 'ar', label: 'العربية', flag: '🇸🇦' },
+    // در آینده زبان‌های دیگر را اینجا اضافه کن:
+    // { code: 'en', label: 'English', flag: '🇺🇸' },
+  ];
+
+  // پیدا کردن زبان فعلی برای نمایش در دکمه اصلی
+  const currentLang = languages.find(l => l.code === lang) || languages[0];
+
+  // بستن منو وقتی بیرون کلیک شد
+  useEffect(() => {
+    function handleClickOutside(event: MouseEvent) {
+      if (dropdownRef.current && !dropdownRef.current.contains(event.target as Node)) {
+        setIsOpen(false);
+      }
+    }
+    document.addEventListener("mousedown", handleClickOutside);
+    return () => document.removeEventListener("mousedown", handleClickOutside);
+  }, []);
+
+  // تابع تغییر زبان
+  const handleLanguageChange = (targetLangCode: string) => {
     if (!pathname) return;
-    
-    // تشخیص زبان فعلی از آدرس
-    // آدرس‌ها به صورت /fa/... یا /ar/... هستند
     const segments = pathname.split('/');
-    const currentLang = segments[1]; // fa یا ar
-    
-    // تعیین زبان هدف
-    const targetLang = currentLang === 'fa' ? 'ar' : 'fa';
-    
-    // جایگزینی زبان در آدرس و حفظ بقیه مسیر
-    segments[1] = targetLang;
+    segments[1] = targetLangCode; // fa یا ar را عوض می‌کند
     const newPath = segments.join('/');
     
+    setIsOpen(false);
     router.push(newPath);
   };
 
   return (
     <nav className="flex items-center justify-between p-4 md:px-8 border-b border-white/10 bg-[#0B0F19]/80 backdrop-blur-md sticky top-0 z-50" dir="ltr">
       
-      {/* سمت چپ (در حالت LTR): دکمه اتصال کیف پول و تغییر زبان */}
+      {/* سمت چپ: دکمه‌ها */}
       <div className="flex items-center gap-3">
-        {/* دکمه کیف پول */}
+        
+        {/* ۱. دکمه اتصال کیف پول */}
         <div dir="ltr">
             <WalletMultiButtonDynamic style={{
                 backgroundColor: '#512da8',
@@ -58,23 +74,47 @@ export default function Navbar({ dict, lang }: NavbarProps) {
                 fontWeight: 'bold',
                 height: '40px',
                 whiteSpace: 'nowrap',
-                padding: '0 16px'
+                padding: '0 16px',
+                fontFamily: 'inherit'
             }}>
               {dict.connect_btn}
             </WalletMultiButtonDynamic>
         </div>
 
-        {/* دکمه تغییر زبان */}
-        <button 
-          onClick={switchLanguage}
-          className="flex items-center gap-2 bg-white/5 hover:bg-white/10 border border-white/10 px-3 py-2 rounded-xl transition-all group h-[40px]"
-          title={lang === 'fa' ? 'تغییر به عربی' : 'Change to Persian'}
-        >
-          <Globe className="w-5 h-5 text-gray-400 group-hover:text-[#14F195] transition-colors" />
-          <span className="text-xs font-bold text-gray-300 uppercase">
-            {lang === 'fa' ? 'AR' : 'FA'}
-          </span>
-        </button>
+        {/* ۲. دراپ‌دان تغییر زبان */}
+        <div className="relative" ref={dropdownRef}>
+          <button 
+            onClick={() => setIsOpen(!isOpen)}
+            className="flex items-center gap-2 bg-white/5 hover:bg-white/10 border border-white/10 px-3 h-[40px] rounded-xl transition-all min-w-[90px] justify-between"
+          >
+            <div className="flex items-center gap-2">
+              <span className="text-xl">{currentLang.flag}</span>
+              <span className="text-xs font-bold text-gray-300 uppercase">{currentLang.code}</span>
+            </div>
+            <ChevronDown className={`w-4 h-4 text-gray-500 transition-transform ${isOpen ? 'rotate-180' : ''}`} />
+          </button>
+
+          {/* لیست کشویی */}
+          {isOpen && (
+            <div className="absolute top-full left-0 mt-2 w-40 bg-[#111621] border border-gray-700 rounded-xl shadow-xl overflow-hidden z-50 animate-fade-in">
+              {languages.map((l) => (
+                <button
+                  key={l.code}
+                  onClick={() => handleLanguageChange(l.code)}
+                  className={`w-full flex items-center justify-between px-4 py-3 hover:bg-white/5 transition-colors text-right ${lang === l.code ? 'bg-white/5' : ''}`}
+                >
+                  <div className="flex items-center gap-3">
+                    <span className="text-lg">{l.flag}</span>
+                    <span className={`text-sm ${lang === l.code ? 'text-[#14F195] font-bold' : 'text-gray-300'}`}>
+                      {l.label}
+                    </span>
+                  </div>
+                  {lang === l.code && <Check className="w-4 h-4 text-[#14F195]" />}
+                </button>
+              ))}
+            </div>
+          )}
+        </div>
       </div>
 
       {/* سمت راست: لوگو و اسم */}
