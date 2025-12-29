@@ -48,6 +48,11 @@ export default function Navbar({ dict, lang }: NavbarProps) {
       label: 'Türkçe', 
       flagUrl: 'https://flagcdn.com/w40/tr.png' // پرچم ترکیه
     },
+    { 
+      code: 'pt', 
+      label: 'Português', 
+      flagUrl: 'https://flagcdn.com/w40/br.png' // پرچم برزیل
+    },
   ];
 
   // پیدا کردن زبان فعلی برای نمایش در دکمه اصلی
@@ -75,7 +80,7 @@ export default function Navbar({ dict, lang }: NavbarProps) {
        return;
     }
 
-    segments[1] = targetLangCode; // fa, ar, en, tr را عوض می‌کند
+    segments[1] = targetLangCode; // fa, ar, en, tr, pt را عوض می‌کند
     const newPath = segments.join('/');
     
     setIsOpen(false);
