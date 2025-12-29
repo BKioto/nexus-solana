@@ -14,20 +14,23 @@ const ContentSection = dynamic(
   }
 );
 
-// تعریف ورودی‌های صفحه (زبان از آدرس می‌آید)
+// تغییر مهم: تایپ ورودی به string تبدیل شد تا با استاندارد Next.js سازگار شود
 interface PageProps {
-  params: Promise<{ lang: Locale }>;
+  params: Promise<{ lang: string }>;
 }
 
 export default async function Home({ params }: PageProps) {
-  // ۱. دریافت زبان از آدرس (await نیاز دارد چون در Next.js 15 پارامترها پرامیس هستند)
+  // ۱. دریافت زبان از آدرس
   const { lang } = await params;
   
+  // تغییر مهم: تبدیل string به تایپ Locale برای جلوگیری از ارور تایپ‌اسکریپت
+  const validLang = lang as Locale;
+  
   // ۲. دریافت دیکشنری مربوط به آن زبان
-  const dict = await getDictionary(lang);
+  const dict = await getDictionary(validLang);
   
   // ۳. تنظیم جهت صفحه (فارسی/عربی -> RTL)
-  const dir = (lang === 'fa' || lang === 'ar') ? 'rtl' : 'ltr';
+  const dir = (validLang === 'fa' || validLang === 'ar') ? 'rtl' : 'ltr';
 
   // --- دیتای JSON-LD برای گوگل (آپدیت شده با دیکشنری) ---
   const jsonLd = {
@@ -35,7 +38,7 @@ export default async function Home({ params }: PageProps) {
     "@type": "WebApplication",
     "name": dict.metadata.title,
     "alternateName": ["Nexus Solana", dict.navbar.title],
-    "url": `https://nexus-solana-taupe.vercel.app/${lang}`,
+    "url": `https://nexus-solana-taupe.vercel.app/${validLang}`,
     "description": dict.metadata.description,
     "applicationCategory": "Blockchain Application",
     "operatingSystem": "All",
@@ -91,7 +94,7 @@ export default async function Home({ params }: PageProps) {
       {/* -------------------------------------------------- */}
       <div className="w-full z-10 relative">
         <div className="absolute top-0 left-0 w-full h-24 bg-gradient-to-b from-[#0B0F19] to-transparent -translate-y-full pointer-events-none"></div>
-        <ContentSection dict={dict} lang={lang} />
+        <ContentSection dict={dict} lang={validLang} />
       </div>
 
       {/* فوتر جدید (متصل به دیکشنری) */}

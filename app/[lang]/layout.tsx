@@ -20,16 +20,20 @@ export const viewport: Viewport = {
 };
 
 // --- تولید متادیتای هوشمند (سئو داینامیک) ---
-export async function generateMetadata({ params }: { params: Promise<{ lang: Locale }> }): Promise<Metadata> {
+// تغییر مهم: تایپ ورودی به Promise<{ lang: string }> تغییر کرد تا بیلد فیل نشود
+export async function generateMetadata({ params }: { params: Promise<{ lang: string }> }): Promise<Metadata> {
   const { lang } = await params;
-  const dict = await getDictionary(lang);
+  
+  // اینجا به سیستم می‌گوییم نگران نباش، این استرینگ همان Locale معتبر ماست
+  const validLang = lang as Locale;
+  const dict = await getDictionary(validLang);
 
   return {
     title: dict.metadata.title,
     description: dict.metadata.description,
     manifest: "/manifest.json",
     
-    // کد تایید گوگل شما (حفظ شده از فایل قبلی)
+    // کد تایید گوگل شما
     verification: {
       google: "sLK4JJOaw4XxKgoHn42-ry2fAMpI17zKnAUyLjKI6mk",
     },
@@ -48,9 +52,9 @@ export async function generateMetadata({ params }: { params: Promise<{ lang: Loc
     openGraph: {
       type: "website",
       // تنظیم لوکال بر اساس زبان فعلی
-      locale: lang === 'fa' ? 'fa_IR' : 'ar_SA',
+      locale: validLang === 'fa' ? 'fa_IR' : 'ar_SA',
       // آدرس داینامیک بر اساس زبان
-      url: `https://nexus-solana-taupe.vercel.app/${lang}`, 
+      url: `https://nexus-solana-taupe.vercel.app/${validLang}`, 
       siteName: "Nexus Solana",
       title: dict.metadata.title,
       description: dict.metadata.description,
@@ -72,25 +76,28 @@ export async function generateStaticParams() {
 }
 
 // --- کامپوننت اصلی لایوت ---
+// تغییر مهم: تایپ ورودی در اینجا هم به string تبدیل شد
 export default async function RootLayout({
   children,
   params,
 }: Readonly<{
   children: React.ReactNode;
-  params: Promise<{ lang: Locale }>;
+  params: Promise<{ lang: string }>;
 }>) {
   const { lang } = await params;
-  const dict = await getDictionary(lang);
+  const validLang = lang as Locale; // تبدیل تایپ
+  
+  const dict = await getDictionary(validLang);
   
   // تعیین جهت صفحه (RTL برای فارسی/عربی)
-  const dir = (lang === 'fa' || lang === 'ar') ? 'rtl' : 'ltr';
+  const dir = (validLang === 'fa' || validLang === 'ar') ? 'rtl' : 'ltr';
 
   return (
-    <html lang={lang} dir={dir}>
+    <html lang={validLang} dir={dir}>
       <body className={`${vazir.className} bg-[#0B0F19] text-white antialiased`}>
         <WalletContextProvider>
           {/* دیکشنری مربوط به نوبار را پاس می‌دهیم */}
-          <Navbar dict={dict.navbar} lang={lang} />
+          <Navbar dict={dict.navbar} lang={validLang} />
           {children}
         </WalletContextProvider>
       </body>
