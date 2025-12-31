@@ -26,32 +26,48 @@ export default function Navbar({ dict, lang }: NavbarProps) {
   const [isOpen, setIsOpen] = useState(false);
   const dropdownRef = useRef<HTMLDivElement>(null);
 
-  // لیست زبان‌های فعال با لینک تصویر پرچم (از CDN سریع FlagCDN)
+  // لیست کامل ۸ زبان فعال پروژه
   const languages = [
     { 
       code: 'fa', 
       label: 'فارسی', 
-      flagUrl: 'https://flagcdn.com/w40/ir.png' // پرچم ایران
+      flagUrl: 'https://flagcdn.com/w40/ir.png' // ایران
     },
     { 
       code: 'ar', 
       label: 'العربية', 
-      flagUrl: 'https://flagcdn.com/w40/sa.png' // پرچم عربستان
+      flagUrl: 'https://flagcdn.com/w40/sa.png' // عربستان
     },
     { 
       code: 'en', 
       label: 'English', 
-      flagUrl: 'https://flagcdn.com/w40/us.png' // پرچم آمریکا (نماد بین‌المللی)
+      flagUrl: 'https://flagcdn.com/w40/us.png' // آمریکا
     },
     { 
       code: 'tr', 
       label: 'Türkçe', 
-      flagUrl: 'https://flagcdn.com/w40/tr.png' // پرچم ترکیه
+      flagUrl: 'https://flagcdn.com/w40/tr.png' // ترکیه
     },
     { 
       code: 'pt', 
       label: 'Português', 
-      flagUrl: 'https://flagcdn.com/w40/br.png' // پرچم برزیل
+      flagUrl: 'https://flagcdn.com/w40/br.png' // برزیل
+    },
+    // --- زبان‌های جدید فاز ۴ ---
+    { 
+      code: 'es', 
+      label: 'Español', 
+      flagUrl: 'https://flagcdn.com/w40/es.png' // اسپانیا (بازار لاتام)
+    },
+    { 
+      code: 'ru', 
+      label: 'Русский', 
+      flagUrl: 'https://flagcdn.com/w40/ru.png' // روسیه (بازار تحریمی)
+    },
+    { 
+      code: 'id', 
+      label: 'Bahasa', 
+      flagUrl: 'https://flagcdn.com/w40/id.png' // اندونزی (بازار آسیای شرقی)
     },
   ];
 
@@ -80,7 +96,7 @@ export default function Navbar({ dict, lang }: NavbarProps) {
        return;
     }
 
-    segments[1] = targetLangCode; // fa, ar, en, tr, pt را عوض می‌کند
+    segments[1] = targetLangCode; // کد زبان را در آدرس عوض می‌کند
     const newPath = segments.join('/');
     
     setIsOpen(false);
@@ -129,7 +145,7 @@ export default function Navbar({ dict, lang }: NavbarProps) {
 
           {/* لیست کشویی */}
           {isOpen && (
-            <div className="absolute top-full left-0 mt-2 w-40 bg-[#111621] border border-gray-700 rounded-xl shadow-xl overflow-hidden z-50 animate-fade-in">
+            <div className="absolute top-full left-0 mt-2 w-40 bg-[#111621] border border-gray-700 rounded-xl shadow-xl overflow-hidden z-50 animate-fade-in max-h-80 overflow-y-auto custom-scrollbar">
               {languages.map((l) => (
                 <button
                   key={l.code}

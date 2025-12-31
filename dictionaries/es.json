@@ -1,0 +1,147 @@
+{
+  "metadata": {
+    "title": "Nexus Solana | Creador de Tokens y Meme Coins",
+    "description": "La primera plataforma no-code para crear activos en la red Solana. Crea tu token en segundos."
+  },
+  "navbar": {
+    "title": "Nexus Solana",
+    "subtitle": "NEXUS SOLANA",
+    "connect_btn": "Conectar Billetera"
+  },
+  "hero": {
+    "title_highlight": "Fábrica de Tokens Nexus",
+    "description": "La Primera Plataforma de Creación de Tokens Sin Código en la Red Solana.",
+    "tag_fast": "Rápido ⚡",
+    "tag_cheap": "Barato 💎",
+    "tag_nocode": "Sin Código 💻"
+  },
+  "token_form": {
+    "title": "Datos del Token",
+    "subtitle": "Esta información se grabará permanentemente en la blockchain.",
+    "label_logo": "Logo del Token",
+    "upload_placeholder_title": "Seleccionar Imagen",
+    "upload_placeholder_desc": "Formato: PNG o JPG (Cuadrado y < 1MB)",
+    "label_name": "Nombre del Token (Name)",
+    "placeholder_name": "Ejemplo: Solana Nexus",
+    "helper_name": "Nombre completo del activo (ej: Bitcoin). Usa caracteres en inglés para mejor compatibilidad.",
+    "label_symbol": "Símbolo (Ticker)",
+    "placeholder_symbol": "NEX",
+    "helper_symbol": "Abreviatura (ej: BTC).\nLos símbolos en Solana no son únicos.",
+    "label_supply": "Suministro (Supply)",
+    "placeholder_supply": "1000000000",
+    "helper_supply": "Cantidad total de tokens (Recomendado: 1 Billón).",
+    "unit": "Tokens",
+    "cost_label": "Tarifa Fija de Servicio:",
+    "cost_value": "0.02 SOL",
+    "btn_create": "Crear Token 🚀",
+    "btn_processing": "Procesando...",
+    "status": {
+      "connect_wallet": "❌ Por favor, conecta tu billetera primero.",
+      "fill_all": "⚠️ Por favor, completa todos los campos (Nombre, Símbolo, Suministro y Logo).",
+      "uploading": "📤 Subiendo logo a servidores globales IPFS...",
+      "creating_metadata": "📝 Generando identidad digital del token (Metadata)...",
+      "confirm_wallet": "⏳ Por favor, confirma la transacción en tu billetera...",
+      "success_title": "✅ ¡Felicidades! ¡Token creado con éxito!",
+      "success_addr": "Dirección de Mint:",
+      "success_wait": "(Espera unos minutos para que la imagen aparezca en la billetera)",
+      "error_prefix": "❌ Error:"
+    }
+  },
+  "content": {
+    "intro": {
+      "title_prefix": "Somos",
+      "title_gradient": "Nexus Solana",
+      "title_suffix": ".",
+      "subtitle": "El fin de la programación costosa.",
+      "paragraph_1": "Blockchain no debe ser exclusivo para desarrolladores. Hasta ayer, para lanzar un token en Solana, necesitabas saber Rust o pagar miles de dólares a programadores.",
+      "paragraph_2": "<strong>Nexus Solana</strong> es una plataforma \"No-Code\" que te permite acuñar (Mint) tu propio token SPL en la red Solana en menos de 1 minuto. Nuestra misión es democratizar el acceso a la Web3 para todos."
+    },
+    "stats": {
+      "stat_1_value": "100%",
+      "stat_1_label": "Propiedad Total",
+      "stat_2_value": "<1 min",
+      "stat_2_label": "Tiempo de Creación",
+      "stat_3_value": "Bajo",
+      "stat_3_label": "Tarifas Competitivas",
+      "stat_4_value": "SPL",
+      "stat_4_label": "Estándar Global"
+    },
+    "use_cases": {
+      "badge": "Casos de Uso Reales",
+      "title": "¿Qué puedes construir?",
+      "description": "Un token no es solo moneda; es una herramienta para construir comunidades, riqueza y diversión.",
+      "card_1_title": "Meme Coin",
+      "card_1_desc": "¡La tendencia más popular! Como <strong>BONK</strong> o <strong>WIF</strong>. Puedes crear un token por diversión, para una comunidad de Telegram o simplemente una broma. Si se forma una comunidad, el valor puede dispararse.",
+      "card_2_title": "Token de Utilidad",
+      "card_2_desc": "Para proyectos serios. Úsalo como moneda en juegos, acceso a suscripciones o gobernanza DAO. Estos tokens tienen respaldo técnico.",
+      "card_3_title": "Puntos de Fidelidad",
+      "card_3_desc": "¡Reemplaza las tarjetas de papel! Dale tokens a tus clientes. Pueden coleccionarlos, intercambiarlos o canjearlos por servicios gratuitos."
+    },
+    "features": {
+      "title": "¿Por qué Nexus Solana?",
+      "item_1_title": "Costo Ultra Bajo",
+      "item_1_desc": "Solo 0.02 SOL de tarifa de servicio. Compáralo con $500+ por contratar a un desarrollador.",
+      "item_2_title": "Seguridad Total",
+      "item_2_desc": "No custodiamos nada. Nunca accedemos a tus Claves Privadas. Tú firmas cada transacción.",
+      "item_3_title": "Cero Código",
+      "item_3_desc": "Interfaz simple y visual. No necesitas saber ni una sola línea de código.",
+      "item_4_title": "Velocidad de la Luz",
+      "item_4_desc": "Impulsado por la red Solana, tu token se crea en milisegundos."
+    },
+    "faq": {
+      "title": "Preguntas Frecuentes",
+      "subtitle": "Todo lo que necesitas saber.",
+      "items": [
+        {
+          "question": "¿Existe un costo para crear?",
+          "answer": "Sí, pero es mínimo. La red Solana cobra una pequeña tarifa de 'Alquiler' (Rent) para almacenar tus datos. Además, Nexus cobra una tarifa fija de 0.02 SOL. Total necesario: ~0.03-0.04 SOL."
+        },
+        {
+          "question": "¿Son reales estos tokens?",
+          "answer": "Sí, 100%. Estás creando Tokens SPL oficiales en la Blockchain Solana. <br/><br/> <strong>Importante:</strong> Para que tu token tenga precio, debes listarlo en un DEX como <strong>Raydium</strong> y agregar Liquidez después de crearlo."
+        },
+        {
+          "question": "Soy principiante. ¿Cómo empiezo?",
+          "answer": "1. Instala la Billetera Phantom. 2. Compra un poco de SOL. 3. Conecta tu billetera aquí. 4. Completa el formulario y haz clic en Crear. ¡Listo!"
+        },
+        {
+          "question": "¿Tienen acceso a mi billetera?",
+          "answer": "No. Nexus es una aplicación descentralizada (Dapp). No tenemos base de datos y no podemos acceder a tus fondos o claves. Las transacciones ocurren directamente entre tú y la blockchain."
+        },
+        {
+          "question": "¿Dónde se almacena la imagen?",
+          "answer": "La imagen de tu token se almacena permanentemente en IPFS (Sistema de Archivos Interplanetario) a través de Pinata. No puede ser eliminada ni censurada."
+        },
+        {
+          "question": "¿Quién controla la Autoridad?",
+          "answer": "Tú. Por defecto, las Autoridades de Mint y Congelamiento se asignan a tu billetera. Tienes propiedad absoluta. Puedes revocar estas autoridades después si lo necesitas."
+        },
+        {
+          "question": "¿Por qué Solana y no Ethereum?",
+          "answer": "Velocidad y Costo. Crear en Ethereum puede costar $50+. En Solana, son centavos. Por eso las Meme Coins explotaron en Solana."
+        },
+        {
+          "question": "¿Cómo listo en Raydium?",
+          "answer": "Después de crear aquí, ve a Raydium.io -> Liquidity -> Create Pool. Selecciona tu token y emparéjalo con SOL (ej: 100M tokens + 5 SOL). Esto crea un mercado para que la gente compre."
+        },
+        {
+          "question": "¿Puedo cambiar el nombre/imagen después?",
+          "answer": "Sí. Los tokens Nexus siguen el estándar Metaplex con `isMutable: true`. Puedes actualizar los metadatos usando herramientas de gestión de tokens, siempre que no hayas revocado la autoridad de actualización."
+        },
+        {
+          "question": "¿Hay restricciones geográficas?",
+          "answer": "No. La blockchain no conoce fronteras. Tu billetera es tu identidad. Nexus está disponible para todos, globalmente."
+        }
+      ]
+    },
+    "footer": {
+      "cta_title": "¿Listo para construir tu imperio?",
+      "cta_desc": "Las oportunidades no esperan. Crea tu primer token ahora y únete a la revolución cripto.",
+      "cta_btn": "Empezar a Crear 🚀",
+      "telegram_btn": "Soporte Telegram",
+      "telegram_desc": "¿Necesitas ayuda? Contacta a <span class=\"text-[#229ED9] dir-ltr font-mono\">@Kioto_Osano</span>",
+      "copyright": "© 2025 Nexus Solana. Todos los derechos reservados.",
+      "tagline": "Construido para el futuro de las Finanzas."
+    }
+  }
+}

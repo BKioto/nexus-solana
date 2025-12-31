@@ -1,0 +1,147 @@
+{
+  "metadata": {
+    "title": "Nexus Solana | Pembuat Token & Meme Coin",
+    "description": "Platform no-code pertama untuk membuat aset di jaringan Solana. Buat token Anda dalam hitungan detik."
+  },
+  "navbar": {
+    "title": "Nexus Solana",
+    "subtitle": "NEXUS SOLANA",
+    "connect_btn": "Sambungkan Dompet"
+  },
+  "hero": {
+    "title_highlight": "Pabrik Token Nexus",
+    "description": "Platform Pembuat Token Tanpa Koding Pertama di Jaringan Solana.",
+    "tag_fast": "Cepat ⚡",
+    "tag_cheap": "Murah 💎",
+    "tag_nocode": "Tanpa Koding 💻"
+  },
+  "token_form": {
+    "title": "Data Token",
+    "subtitle": "Informasi ini akan disimpan secara permanen di blockchain.",
+    "label_logo": "Logo Token",
+    "upload_placeholder_title": "Pilih Gambar",
+    "upload_placeholder_desc": "Format: PNG atau JPG (Kotak & < 1MB)",
+    "label_name": "Nama Token (Name)",
+    "placeholder_name": "Contoh: Solana Nexus",
+    "helper_name": "Nama lengkap aset (contoh: Bitcoin). Gunakan huruf Inggris.",
+    "label_symbol": "Simbol (Ticker)",
+    "placeholder_symbol": "NEX",
+    "helper_symbol": "Singkatan (contoh: BTC).\nSimbol di Solana tidak unik.",
+    "label_supply": "Suplai (Supply)",
+    "placeholder_supply": "1000000000",
+    "helper_supply": "Total jumlah token (Disarankan: 1 Miliar).",
+    "unit": "Token",
+    "cost_label": "Biaya Layanan Tetap:",
+    "cost_value": "0.02 SOL",
+    "btn_create": "Buat Token 🚀",
+    "btn_processing": "Memproses...",
+    "status": {
+      "connect_wallet": "❌ Harap sambungkan dompet Anda terlebih dahulu.",
+      "fill_all": "⚠️ Harap isi semua kolom (Nama, Simbol, Suplai, dan Logo).",
+      "uploading": "📤 Mengunggah logo ke server IPFS global...",
+      "creating_metadata": "📝 Membuat identitas digital token (Metadata)...",
+      "confirm_wallet": "⏳ Harap konfirmasi transaksi di dompet Anda...",
+      "success_title": "✅ Selamat! Token berhasil dibuat!",
+      "success_addr": "Alamat Mint:",
+      "success_wait": "(Tunggu beberapa menit agar gambar muncul di dompet)",
+      "error_prefix": "❌ Error:"
+    }
+  },
+  "content": {
+    "intro": {
+      "title_prefix": "Kami adalah",
+      "title_gradient": "Nexus Solana",
+      "title_suffix": ".",
+      "subtitle": "Akhir dari koding yang mahal.",
+      "paragraph_1": "Blockchain tidak boleh hanya untuk programmer. Sampai kemarin, untuk meluncurkan token di Solana, Anda harus tahu Rust atau membayar ribuan dolar ke pengembang.",
+      "paragraph_2": "<strong>Nexus Solana</strong> adalah platform \"No-Code\" yang memungkinkan Anda mencetak (Mint) token SPL Anda sendiri di jaringan Solana dalam waktu kurang dari 1 menit. Misi kami adalah mendemokratisasi akses Web3 untuk semua orang."
+    },
+    "stats": {
+      "stat_1_value": "100%",
+      "stat_1_label": "Kepemilikan Penuh",
+      "stat_2_value": "<1 mnt",
+      "stat_2_label": "Waktu Pembuatan",
+      "stat_3_value": "Rendah",
+      "stat_3_label": "Biaya Kompetitif",
+      "stat_4_value": "SPL",
+      "stat_4_label": "Standar Global"
+    },
+    "use_cases": {
+      "badge": "Kegunaan Nyata",
+      "title": "Apa yang bisa Anda bangun?",
+      "description": "Token bukan hanya mata uang; itu alat untuk membangun komunitas, kekayaan, dan hiburan.",
+      "card_1_title": "Meme Coin",
+      "card_1_desc": "Tren paling populer! Seperti <strong>BONK</strong> atau <strong>WIF</strong>. Anda bisa membuat token untuk lucu-lucuan, komunitas Telegram, atau sekadar lelucon. Jika komunitas terbentuk, nilainya bisa meroket.",
+      "card_2_title": "Token Utilitas",
+      "card_2_desc": "Untuk proyek serius. Gunakan untuk mata uang game, akses langganan, atau tata kelola DAO. Token ini memiliki dukungan teknis.",
+      "card_3_title": "Poin Loyalitas",
+      "card_3_desc": "Ganti kartu kertas! Berikan token ke pelanggan Anda. Mereka bisa mengumpulkan, menukar, atau menebusnya untuk layanan gratis."
+    },
+    "features": {
+      "title": "Mengapa Nexus Solana?",
+      "item_1_title": "Biaya Sangat Rendah",
+      "item_1_desc": "Hanya 0.02 SOL biaya layanan. Bandingkan dengan $500+ untuk menyewa pengembang.",
+      "item_2_title": "Keamanan Penuh",
+      "item_2_desc": "Kami non-kustodian. Kami tidak pernah mengakses Kunci Pribadi Anda. Anda menandatangani setiap transaksi sendiri.",
+      "item_3_title": "Tanpa Koding",
+      "item_3_desc": "Antarmuka visual yang sederhana. Anda tidak perlu tahu satu baris kode pun.",
+      "item_4_title": "Kecepatan Cahaya",
+      "item_4_desc": "Didukung oleh jaringan Solana, token Anda dibuat dalam milidetik."
+    },
+    "faq": {
+      "title": "Pertanyaan Umum",
+      "subtitle": "Segala sesuatu yang perlu Anda ketahui.",
+      "items": [
+        {
+          "question": "Apakah ada biaya untuk membuat?",
+          "answer": "Ya, tapi sangat minimal. Jaringan Solana mengenakan biaya 'Sewa' (Rent) kecil untuk menyimpan data Anda. Selain itu, Nexus mengenakan biaya tetap 0.02 SOL. Total yang dibutuhkan: ~0.03-0.04 SOL."
+        },
+        {
+          "question": "Apakah token ini nyata?",
+          "answer": "Ya, 100%. Anda mencetak Token SPL resmi di Blockchain Solana. <br/><br/> <strong>Penting:</strong> Agar token Anda memiliki harga, Anda harus mendaftarkannya di DEX seperti <strong>Raydium</strong> dan menambahkan Likuiditas setelah pembuatan."
+        },
+        {
+          "question": "Saya pemula. Bagaimana cara mulainya?",
+          "answer": "1. Instal Dompet Phantom. 2. Beli sedikit SOL. 3. Sambungkan dompet di sini. 4. Isi formulir dan klik Buat. Selesai!"
+        },
+        {
+          "question": "Apakah Anda memiliki akses ke dompet saya?",
+          "answer": "Tidak. Nexus adalah aplikasi terdesentralisasi (Dapp). Kami tidak memiliki database dan tidak dapat mengakses dana atau kunci Anda. Transaksi terjadi langsung antara Anda dan blockchain."
+        },
+        {
+          "question": "Di mana gambar disimpan?",
+          "answer": "Gambar token Anda disimpan secara permanen di IPFS (InterPlanetary File System) melalui Pinata. Itu tidak dapat dihapus atau disensor."
+        },
+        {
+          "question": "Siapa yang mengontrol Otoritas?",
+          "answer": "Anda. Secara default, Otoritas Mint dan Freeze diberikan ke dompet Anda. Anda memiliki kepemilikan mutlak. Anda dapat mencabut otoritas ini nanti jika perlu."
+        },
+        {
+          "question": "Mengapa Solana dan bukan Ethereum?",
+          "answer": "Kecepatan dan Biaya. Membuat di Ethereum bisa memakan biaya $50+. Di Solana, hanya sen. Itulah mengapa Meme Coin meledak di Solana."
+        },
+        {
+          "question": "Bagaimana cara listing di Raydium?",
+          "answer": "Setelah membuat di sini, buka Raydium.io -> Liquidity -> Create Pool. Pilih token Anda dan pasangkan dengan SOL (contoh: 100Jt token + 5 SOL). Ini menciptakan pasar untuk orang membeli."
+        },
+        {
+          "question": "Bisakah saya mengubah nama/gambar nanti?",
+          "answer": "Ya. Token Nexus mematuhi standar Metaplex dengan `isMutable: true`. Anda dapat memperbarui metadata menggunakan alat manajemen token, selama Anda belum mencabut otoritas pembaruan."
+        },
+        {
+          "question": "Apakah ada batasan geografis?",
+          "answer": "Tidak. Blockchain tidak mengenal batas. Dompet Anda adalah identitas Anda. Nexus tersedia untuk semua orang, secara global."
+        }
+      ]
+    },
+    "footer": {
+      "cta_title": "Siap membangun kerajaan Anda?",
+      "cta_desc": "Peluang tidak menunggu. Buat token pertama Anda sekarang dan bergabunglah dengan revolusi kripto.",
+      "cta_btn": "Mulai Mencetak 🚀",
+      "telegram_btn": "Dukungan Telegram",
+      "telegram_desc": "Butuh bantuan? Hubungi <span class=\"text-[#229ED9] dir-ltr font-mono\">@Kioto_Osano</span>",
+      "copyright": "© 2025 Nexus Solana. Hak cipta dilindungi undang-undang.",
+      "tagline": "Dibangun untuk masa depan Keuangan."
+    }
+  }
+}
