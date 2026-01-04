@@ -2,8 +2,8 @@ import { getDictionary } from "../get-dictionary";
 import { Locale } from "../../i18n-config";
 import dynamic from "next/dynamic";
 import { TokenForm } from "../../components/TokenForm";
+import Footer from "../../components/Footer"; // ✅ ایمپورت فوتر جدید
 import Script from "next/script";
-import { Send } from "lucide-react";
 
 // --- لود تنبل کانتنت سکشن ---
 const ContentSection = dynamic(
@@ -14,7 +14,6 @@ const ContentSection = dynamic(
   }
 );
 
-// تغییر مهم: تایپ ورودی به string تبدیل شد تا با استاندارد Next.js سازگار شود
 interface PageProps {
   params: Promise<{ lang: string }>;
 }
@@ -23,7 +22,7 @@ export default async function Home({ params }: PageProps) {
   // ۱. دریافت زبان از آدرس
   const { lang } = await params;
   
-  // تغییر مهم: تبدیل string به تایپ Locale برای جلوگیری از ارور تایپ‌اسکریپت
+  // تبدیل string به تایپ Locale
   const validLang = lang as Locale;
   
   // ۲. دریافت دیکشنری مربوط به آن زبان
@@ -32,7 +31,7 @@ export default async function Home({ params }: PageProps) {
   // ۳. تنظیم جهت صفحه (فارسی/عربی -> RTL)
   const dir = (validLang === 'fa' || validLang === 'ar') ? 'rtl' : 'ltr';
 
-  // --- دیتای JSON-LD برای گوگل (آپدیت شده با دیکشنری) ---
+  // --- دیتای JSON-LD برای گوگل ---
   const jsonLd = {
     "@context": "https://schema.org",
     "@type": "WebApplication",
@@ -65,7 +64,7 @@ export default async function Home({ params }: PageProps) {
       <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[600px] h-[500px] bg-purple-600/20 rounded-full blur-[120px] -z-10 pointer-events-none"></div>
       
       {/* -------------------------------------------------- */}
-      {/* بخش ۱: هیرو (بالای صفحه) - متصل به دیکشنری */}
+      {/* بخش ۱: هیرو (بالای صفحه) */}
       {/* -------------------------------------------------- */}
       <div className="text-center mb-10 w-full max-w-5xl px-4 z-10 animate-fade-in-down">
         <h1 className="text-4xl md:text-6xl lg:text-7xl font-extrabold tracking-tight mb-6 leading-tight">
@@ -84,42 +83,25 @@ export default async function Home({ params }: PageProps) {
         </p>
       </div>
 
-      {/* فرم اصلی ساخت توکن (دیکشنری به آن پاس داده می‌شود) */}
+      {/* فرم اصلی ساخت توکن */}
       <div className="w-full z-10 mb-32">
         <TokenForm dict={dict} />
       </div>
 
       {/* -------------------------------------------------- */}
-      {/* بخش ۲: محتوای آموزشی (دیکشنری به آن پاس داده می‌شود) */}
+      {/* بخش ۲: محتوای آموزشی */}
       {/* -------------------------------------------------- */}
-      <div className="w-full z-10 relative">
+      <div className="w-full z-10 relative mb-12">
         <div className="absolute top-0 left-0 w-full h-24 bg-gradient-to-b from-[#0B0F19] to-transparent -translate-y-full pointer-events-none"></div>
         <ContentSection dict={dict} lang={validLang} />
       </div>
 
-      {/* فوتر جدید (متصل به دیکشنری) */}
-      <footer className="w-full text-center py-12 text-gray-600 text-sm border-t border-white/5 mt-12 bg-[#0B0F19]">
-        
-        {/* بخش دکمه تلگرام */}
-        <div className="flex flex-col items-center justify-center gap-4 mb-8">
-          <a 
-            href="https://t.me/Kioto_Osano" 
-            target="_blank" 
-            rel="noopener noreferrer"
-            className="group flex items-center gap-3 bg-[#229ED9]/10 text-[#229ED9] px-6 py-3 rounded-full hover:bg-[#229ED9] hover:text-white transition-all border border-[#229ED9]/20 hover:scale-105"
-          >
-            <Send className="w-5 h-5 group-hover:-translate-y-1 group-hover:translate-x-1 transition-transform" />
-            <span className="font-bold text-base">{dict.content.footer.telegram_btn}</span>
-          </a>
-          <p 
-            className="text-gray-500 text-xs md:text-sm"
-            dangerouslySetInnerHTML={{ __html: dict.content.footer.telegram_desc }}
-          />
-        </div>
-
-        <p>{dict.content.footer.copyright}</p>
-        <p className="mt-2 text-xs">{dict.content.footer.tagline}</p>
-      </footer>
+      {/* -------------------------------------------------- */}
+      {/* بخش ۳: فوتر جدید (متصل به کامپوننت جداگانه) */}
+      {/* -------------------------------------------------- */}
+      <div className="w-full z-10 -mx-4 md:-mx-8">
+        <Footer dict={dict} lang={validLang} />
+      </div>
 
     </main>
   );
