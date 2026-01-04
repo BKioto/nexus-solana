@@ -4,28 +4,20 @@ import { i18n } from './i18n-config';
 import { match as matchLocale } from '@formatjs/intl-localematcher';
 import Negotiator from 'negotiator';
 
-// تابع تشخیص زبان کاربر بر اساس تنظیمات مرورگرش
 function getLocale(request: NextRequest): string | undefined {
-  // هدرهای درخواست را تبدیل می‌کنیم به چیزی که کتابخانه negotiator بفهمد
   const negotiatorHeaders: Record<string, string> = {};
   request.headers.forEach((value, key) => (negotiatorHeaders[key] = value));
 
-  // زبان‌های مورد قبول مرورگر کاربر (مثلاً: en-US, ar-SA, fa-IR)
   // @ts-ignore locales are readonly
   const languages = new Negotiator({ headers: negotiatorHeaders }).languages();
-  
-  // زبان‌های مجاز سایت ما (fa, ar, en, tr, pt, es, ru, id)
   const locales: string[] = i18n.locales as unknown as string[];
-
-  // تطبیق دادن زبان کاربر با زبان‌های ما (اگر پیدا نشد، زبان پیش‌فرض i18n.defaultLocale را برمی‌گرداند)
   return matchLocale(languages, locales, i18n.defaultLocale);
 }
 
 export function middleware(request: NextRequest) {
   const pathname = request.nextUrl.pathname;
 
-  // ۱. بررسی فایل‌های سیستمی که نباید تغییر زبان داشته باشند
-  // تغییر جدید: اضافه کردن شرط برای فایل‌های google و پسوندهای html/xml
+  // ۱. لیست سیاه برای جلوگیری از ریدایرکت فایل‌های سیستمی و Route گوگل
   const isSystemFile = [
     '/manifest.json',
     '/favicon.ico',
@@ -36,24 +28,20 @@ export function middleware(request: NextRequest) {
     '/sitemap.xml',
     '/sitemap.ts',
   ].some(path => pathname.includes(path)) 
-  || pathname.toLowerCase().includes('google') // برای فایل تاییدیه گوگل
-  || pathname.endsWith('.html') // برای هر فایل HTML دیگر در روت
-  || pathname.endsWith('.xml'); // برای سایت‌مپ‌ها
+  || pathname.toLowerCase().includes('google') // حیاتی برای Route گوگل
+  || pathname.endsWith('.html') 
+  || pathname.endsWith('.xml');
 
-  // اگر فایل سیستمی یا تاییدیه گوگل بود، میدل‌ور اینجا متوقف می‌شود و ریدایرکت انجام نمی‌دهد
   if (isSystemFile) return;
 
-  // ۲. بررسی اینکه آیا آدرس فعلی، خودش زبان دارد یا نه؟
-  // مثلاً /fa/about یا /ar/token
+  // ۲. بررسی نیاز به ریدایرکت زبان
   const pathnameIsMissingLocale = i18n.locales.every(
     (locale) => !pathname.startsWith(`/${locale}/`) && pathname !== `/${locale}`
   );
 
-  // ۳. اگر زبان نداشت، زبان مناسب را پیدا کن و رایرکت کن
+  // ۳. ریدایرکت
   if (pathnameIsMissingLocale) {
     const locale = getLocale(request);
-    
-    // رایرکت به آدرس جدید (مثلاً از / به /fa)
     return NextResponse.redirect(
       new URL(
         `/${locale}${pathname.startsWith('/') ? '' : '/'}${pathname}`,
@@ -63,11 +51,9 @@ export function middleware(request: NextRequest) {
   }
 }
 
-// تنظیمات مچر (Matcher)
-// این بخش می‌گوید که میدل‌ور روی کدام آدرس‌ها فعال باشد
 export const config = {
   matcher: [
-    // همه مسیرها را چک کن به جز فایل‌های استاتیک، API ها، و فایل‌های HTML/XML (مخصوصا برای گوگل)
+    // این الگو می‌گوید: همه چیز را مدیریت کن به جز این لیست استثنا
     '/((?!api|_next/static|_next/image|assets|favicon.ico|sw.js|.*\\.html|.*\\.xml|robots.txt).*)',
   ],
 };

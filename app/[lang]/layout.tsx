@@ -20,12 +20,10 @@ export const viewport: Viewport = {
   maximumScale: 1,
 };
 
-// --- تولید متادیتای هوشمند برای سئو ---
 export async function generateMetadata({ params }: { params: Promise<{ lang: string }> }): Promise<Metadata> {
   const { lang } = await params;
   const validLang = lang as Locale;
   const dict = await getDictionary(validLang);
-
   const baseUrl = "https://nexus-solana-taupe.vercel.app";
 
   return {
@@ -33,7 +31,7 @@ export async function generateMetadata({ params }: { params: Promise<{ lang: str
     description: dict.metadata.description,
     manifest: "/manifest.json",
     
-    // ✅ تنظیمات حیاتی ربات‌های گوگل
+    // تنظیمات ربات‌ها (مهم برای ایندکس شدن)
     robots: {
       index: true,
       follow: true,
@@ -46,12 +44,11 @@ export async function generateMetadata({ params }: { params: Promise<{ lang: str
       },
     },
 
-    // ✅ کد تایید جدید گوگل سرچ کنسول
+    // کد تایید گوگل (به عنوان روش دوم/پشتیبان)
     verification: {
       google: "8cWMZpAnmbxrh3GnAaleixYIEE5V9B6nhGt2pnh9eKk",
     },
 
-    // لینک‌های کانونیکال و زبان‌های جایگزین
     alternates: {
       canonical: `${baseUrl}/${validLang}`,
       languages: {
@@ -96,12 +93,10 @@ export async function generateMetadata({ params }: { params: Promise<{ lang: str
   };
 }
 
-// تولید مسیرهای استاتیک برای بیلد
 export async function generateStaticParams() {
   return i18n.locales.map((locale) => ({ lang: locale }));
 }
 
-// --- کامپوننت اصلی لایوت ---
 export default async function RootLayout({
   children,
   params,
@@ -112,11 +107,9 @@ export default async function RootLayout({
   const { lang } = await params;
   const validLang = lang as Locale;
   const dict = await getDictionary(validLang);
-  
-  // تعیین جهت صفحه
   const dir = (validLang === 'fa' || validLang === 'ar') ? 'rtl' : 'ltr';
 
-  // ✅ داده‌های ساختار یافته سازمانی (Global Schema)
+  // اسکیمای سازمانی (Organization Schema)
   const organizationSchema = {
     "@context": "https://schema.org",
     "@type": "Organization",
@@ -132,7 +125,6 @@ export default async function RootLayout({
   return (
     <html lang={validLang} dir={dir}>
       <head>
-        {/* تزریق اسکیمای سازمانی در تمام صفحات */}
         <Script
           id="org-schema"
           type="application/ld+json"
