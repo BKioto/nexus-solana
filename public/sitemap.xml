@@ -1,15 +1,65 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+  <!-- فارسی (Target: Iran/Afghanistan) -->
   <url>
     <loc>https://nexus-solana-taupe.vercel.app/fa</loc>
-    <lastmod>2025-12-29</lastmod>
+    <lastmod>2026-01-04</lastmod>
     <changefreq>daily</changefreq>
     <priority>1.0</priority>
   </url>
-  
+
+  <!-- عربی (Target: GCC/MENA) -->
   <url>
     <loc>https://nexus-solana-taupe.vercel.app/ar</loc>
-    <lastmod>2025-12-29</lastmod>
+    <lastmod>2026-01-04</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>1.0</priority>
+  </url>
+
+  <!-- انگلیسی (Target: Global) -->
+  <url>
+    <loc>https://nexus-solana-taupe.vercel.app/en</loc>
+    <lastmod>2026-01-04</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>1.0</priority>
+  </url>
+
+  <!-- ترکی (Target: Turkey) -->
+  <url>
+    <loc>https://nexus-solana-taupe.vercel.app/tr</loc>
+    <lastmod>2026-01-04</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>1.0</priority>
+  </url>
+
+  <!-- پرتغالی (Target: Brazil) -->
+  <url>
+    <loc>https://nexus-solana-taupe.vercel.app/pt</loc>
+    <lastmod>2026-01-04</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>1.0</priority>
+  </url>
+
+  <!-- اسپانیایی (Target: LATAM/Spain) -->
+  <url>
+    <loc>https://nexus-solana-taupe.vercel.app/es</loc>
+    <lastmod>2026-01-04</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>1.0</priority>
+  </url>
+
+  <!-- روسی (Target: Russia/CIS) -->
+  <url>
+    <loc>https://nexus-solana-taupe.vercel.app/ru</loc>
+    <lastmod>2026-01-04</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>1.0</priority>
+  </url>
+
+  <!-- اندونزیایی (Target: Southeast Asia) -->
+  <url>
+    <loc>https://nexus-solana-taupe.vercel.app/id</loc>
+    <lastmod>2026-01-04</lastmod>
     <changefreq>daily</changefreq>
     <priority>1.0</priority>
   </url>
