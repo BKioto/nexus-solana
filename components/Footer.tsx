@@ -8,24 +8,37 @@ interface FooterProps {
   lang: string;
 }
 
+// عنوان مناسب برای بخش پشتیبانی بر اساس زبان
+const getSupportTitle = (lang: string) => {
+  switch(lang) {
+    case 'fa': return "پشتیبانی و ارتباط با ما";
+    case 'ar': return "الدعم والتواصل";
+    case 'tr': return "Destek ve İletişim";
+    case 'ru': return "Поддержка и контакты";
+    case 'es': return "Soporte y Contacto";
+    case 'pt': return "Suporte e Contato";
+    case 'id': return "Dukungan & Kontak";
+    default: return "Support & Contact";
+  }
+};
+
 export default function Footer({ dict, lang }: FooterProps) {
   const t = dict.content.footer;
+  const supportTitle = getSupportTitle(lang);
 
   return (
-    <footer className="relative border-t border-white/5 bg-[#0B0F19] pt-16 pb-8 overflow-hidden font-sans">
-      {/* 1. پس‌زمینه مشبک مهندسی (Grid Background) - مشابه KiyaDev */}
+    // font-sans حذف شد تا فونت وزیر اعمال شود
+    <footer className="relative border-t border-white/5 bg-[#0B0F19] pt-16 pb-8 overflow-hidden">
+      {/* 1. پس‌زمینه مشبک مهندسی (Grid Background) */}
       <div className="absolute top-0 left-0 w-full h-full bg-[linear-gradient(rgba(255,255,255,0.02)_1px,transparent_1px),linear-gradient(90deg,rgba(255,255,255,0.02)_1px,transparent_1px)] bg-[size:32px_32px] [mask-image:radial-gradient(ellipse_60%_60%_at_50%_50%,#000_70%,transparent_100%)] pointer-events-none" />
 
       <div className="container mx-auto px-6 relative z-10">
         
-        {/* بخش بالا: دکمه‌های ارتباطی (CTA) */}
+        {/* بخش بالا: دکمه‌های پشتیبانی (جایگزین CTA امپراتوری) */}
         <div className="flex flex-col items-center text-center mb-16">
-          <h2 className="text-3xl md:text-4xl font-bold text-white mb-2 tracking-tight">
-            {t.cta_title}
+          <h2 className="text-3xl md:text-4xl font-bold text-white mb-6 tracking-tight">
+            {supportTitle}
           </h2>
-          <p className="text-gray-400 mb-8 max-w-lg mx-auto text-sm md:text-base leading-7">
-            {t.cta_desc}
-          </p>
           
           <div className="flex flex-wrap justify-center gap-4 w-full max-w-lg">
             {/* دکمه تلگرام */}
@@ -40,6 +53,7 @@ export default function Footer({ dict, lang }: FooterProps) {
             </a>
           </div>
           
+          {/* توضیحات تلگرام (Need help?) */}
           <p 
             className="mt-6 text-gray-500 text-xs md:text-sm"
             dangerouslySetInnerHTML={{ __html: t.telegram_desc }}
@@ -58,7 +72,7 @@ export default function Footer({ dict, lang }: FooterProps) {
               Nexus<span className="text-[#14F195]">Solana</span>
             </span>
             
-            {/* ✅ لینک مخفی پارتنرها (دکمه Library) */}
+            {/* لینک مخفی پارتنرها */}
             <Link 
               href={`/${lang}/partners`}
               title="Partners & Projects"

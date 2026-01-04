@@ -126,7 +126,8 @@ const partners = [
 
 export default function PartnersPage() {
   return (
-    <div className="min-h-screen bg-[#0B0F19] pt-28 pb-10 px-4 sm:px-8 relative overflow-hidden font-sans text-right" dir="rtl">
+    // font-sans حذف شد تا فونت وزیر اعمال شود
+    <div className="min-h-screen bg-[#0B0F19] pt-28 pb-10 px-4 sm:px-8 relative overflow-hidden text-right" dir="rtl">
       
       {/* بک‌گراند نوری متناسب با تم نکسوس */}
       <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[600px] h-[500px] bg-purple-600/20 rounded-full blur-[120px] -z-10 pointer-events-none"></div>
