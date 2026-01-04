@@ -14,7 +14,7 @@ function getLocale(request: NextRequest): string | undefined {
   // @ts-ignore locales are readonly
   const languages = new Negotiator({ headers: negotiatorHeaders }).languages();
   
-  // زبان‌های مجاز سایت ما (fa, ar, en, tr, pt)
+  // زبان‌های مجاز سایت ما (fa, ar, en, tr, pt, es, ru, id)
   const locales: string[] = i18n.locales as unknown as string[];
 
   // تطبیق دادن زبان کاربر با زبان‌های ما (اگر پیدا نشد، زبان پیش‌فرض i18n.defaultLocale را برمی‌گرداند)
@@ -24,8 +24,8 @@ function getLocale(request: NextRequest): string | undefined {
 export function middleware(request: NextRequest) {
   const pathname = request.nextUrl.pathname;
 
-  // ۱. بررسی فایل‌های سیستمی که نباید تغییر زبان داشته باشند (عکس‌ها، ربات‌ها، فونت‌ها)
-  // این لیست خیلی مهم است تا عکس‌های سایت خراب نشوند
+  // ۱. بررسی فایل‌های سیستمی که نباید تغییر زبان داشته باشند
+  // تغییر جدید: اضافه کردن شرط برای فایل‌های google و پسوندهای html/xml
   const isSystemFile = [
     '/manifest.json',
     '/favicon.ico',
@@ -35,8 +35,12 @@ export function middleware(request: NextRequest) {
     '/robots.txt',
     '/sitemap.xml',
     '/sitemap.ts',
-  ].some(path => pathname.includes(path));
+  ].some(path => pathname.includes(path)) 
+  || pathname.toLowerCase().includes('google') // برای فایل تاییدیه گوگل
+  || pathname.endsWith('.html') // برای هر فایل HTML دیگر در روت
+  || pathname.endsWith('.xml'); // برای سایت‌مپ‌ها
 
+  // اگر فایل سیستمی یا تاییدیه گوگل بود، میدل‌ور اینجا متوقف می‌شود و ریدایرکت انجام نمی‌دهد
   if (isSystemFile) return;
 
   // ۲. بررسی اینکه آیا آدرس فعلی، خودش زبان دارد یا نه؟
@@ -63,7 +67,7 @@ export function middleware(request: NextRequest) {
 // این بخش می‌گوید که میدل‌ور روی کدام آدرس‌ها فعال باشد
 export const config = {
   matcher: [
-    // همه مسیرها را چک کن به جز فایل‌های استاتیک داخلی نکست و API ها
-    '/((?!api|_next/static|_next/image|assets|favicon.ico|sw.js).*)',
+    // همه مسیرها را چک کن به جز فایل‌های استاتیک، API ها، و فایل‌های HTML/XML (مخصوصا برای گوگل)
+    '/((?!api|_next/static|_next/image|assets|favicon.ico|sw.js|.*\\.html|.*\\.xml|robots.txt).*)',
   ],
 };
