@@ -31,7 +31,7 @@ export async function generateMetadata({ params }: { params: Promise<{ lang: str
     description: dict.metadata.description,
     manifest: "/manifest.json",
     
-    // تنظیمات ربات‌ها (مهم برای ایندکس شدن)
+    // تنظیمات ربات‌ها
     robots: {
       index: true,
       follow: true,
@@ -44,7 +44,7 @@ export async function generateMetadata({ params }: { params: Promise<{ lang: str
       },
     },
 
-    // کد تایید گوگل (به عنوان روش دوم/پشتیبان)
+    // کد تایید گوگل (تگی که فرستادید)
     verification: {
       google: "8cWMZpAnmbxrh3GnAaleixYIEE5V9B6nhGt2pnh9eKk",
     },
@@ -109,7 +109,7 @@ export default async function RootLayout({
   const dict = await getDictionary(validLang);
   const dir = (validLang === 'fa' || validLang === 'ar') ? 'rtl' : 'ltr';
 
-  // اسکیمای سازمانی (Organization Schema)
+  // اسکیمای سازمانی
   const organizationSchema = {
     "@context": "https://schema.org",
     "@type": "Organization",
