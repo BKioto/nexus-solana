@@ -12,11 +12,12 @@ import {
   Bot,
   LayoutDashboard, 
   Shirt,
-  Code2
+  Code2,
+  Sparkles // آیکون قلاب جادویی
 } from "lucide-react";
 import Link from "next/link";
 
-// لیست دقیق ۸ همکار تجاری (بدون نکسوس سولانا)
+// لیست دقیق ۹ همکار تجاری (بدون نکسوس سولانا)
 const partners = [
   // 1. Kiya Dev (مهم: لینک به شرکت مادر)
   {
@@ -121,6 +122,19 @@ const partners = [
     borderColor: "group-hover:border-rose-500/50",
     glow: "group-hover:shadow-rose-500/20",
     bgIcon: "bg-rose-500/10"
+  },
+  // 9. Gholab Jadooi
+  {
+    id: 9,
+    title: "قلاب جادویی | دست‌بافت‌های فانتزی",
+    description: "فروشگاه آنلاین و تخصصی دست‌بافت‌های فانتزی، عروسک‌های آمیگورومی و دسته گل‌های کاموایی جاودان. خلق شده با ظرافت و هنر دست.",
+    features: ["فروشگاه آنلاین", "دست‌سازه", "E-Commerce"],
+    url: "https://www.gholabjadooi.ir", 
+    icon: Sparkles,
+    color: "text-pink-400",
+    borderColor: "group-hover:border-pink-500/50",
+    glow: "group-hover:shadow-pink-500/20",
+    bgIcon: "bg-pink-500/10"
   }
 ];
 
@@ -153,56 +167,61 @@ export default function PartnersPage() {
 
         {/* گرید کارت‌ها */}
         <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-2">
-          {partners.map((partner) => (
-            <a
-              key={partner.id}
-              href={partner.url}
-              target="_blank"
-              rel="dofollow" 
-              className={`group relative flex flex-col justify-between rounded-3xl border border-gray-800 bg-[#111621] p-6 transition-all duration-300 hover:-translate-y-2 hover:shadow-2xl ${partner.borderColor} ${partner.glow}`}
-            >
-              <div>
-                {/* هدر کارت */}
-                <div className="flex items-start justify-between mb-4">
-                  <div className={`rounded-2xl p-3 border border-white/5 ${partner.bgIcon} ${partner.color}`}>
-                    <partner.icon size={28} strokeWidth={1.5} />
+          {partners.map((partner) => {
+            // رفع خطای رندر آیکون
+            const Icon = partner.icon;
+
+            return (
+              <a
+                key={partner.id}
+                href={partner.url}
+                target="_blank"
+                rel="dofollow" 
+                className={`group relative flex flex-col justify-between rounded-3xl border border-gray-800 bg-[#111621] p-6 transition-all duration-300 hover:-translate-y-2 hover:shadow-2xl ${partner.borderColor} ${partner.glow}`}
+              >
+                <div>
+                  {/* هدر کارت */}
+                  <div className="flex items-start justify-between mb-4">
+                    <div className={`rounded-2xl p-3 border border-white/5 ${partner.bgIcon} ${partner.color}`}>
+                      <Icon size={28} strokeWidth={1.5} />
+                    </div>
+                    <div className="rounded-full bg-black/20 border border-white/10 px-3 py-1 flex items-center gap-1">
+                       <Briefcase size={12} className="text-gray-500" />
+                      <span className="text-[10px] text-gray-500 font-mono uppercase tracking-wider">Verified</span>
+                    </div>
                   </div>
-                  <div className="rounded-full bg-black/20 border border-white/10 px-3 py-1 flex items-center gap-1">
-                     <Briefcase size={12} className="text-gray-500" />
-                    <span className="text-[10px] text-gray-500 font-mono uppercase tracking-wider">Verified</span>
+
+                  <h2 className="mb-3 text-xl font-bold text-white group-hover:text-[#14F195] transition-colors">
+                    {partner.title}
+                  </h2>
+                  
+                  <p className="text-sm leading-7 text-gray-400 mb-6 text-justify opacity-80 group-hover:opacity-100 transition-opacity">
+                    {partner.description}
+                  </p>
+
+                  {/* تگ‌ها */}
+                  <div className="flex flex-wrap gap-2 mb-6">
+                    {partner.features.map((feature, idx) => (
+                      <span key={idx} className="text-[11px] bg-black/30 text-gray-400 border border-white/5 px-2.5 py-1 rounded-lg">
+                        {feature}
+                      </span>
+                    ))}
                   </div>
                 </div>
 
-                <h2 className="mb-3 text-xl font-bold text-white group-hover:text-[#14F195] transition-colors">
-                  {partner.title}
-                </h2>
-                
-                <p className="text-sm leading-7 text-gray-400 mb-6 text-justify opacity-80 group-hover:opacity-100 transition-opacity">
-                  {partner.description}
-                </p>
-
-                {/* تگ‌ها */}
-                <div className="flex flex-wrap gap-2 mb-6">
-                  {partner.features.map((feature, idx) => (
-                    <span key={idx} className="text-[11px] bg-black/30 text-gray-400 border border-white/5 px-2.5 py-1 rounded-lg">
-                      {feature}
-                    </span>
-                  ))}
+                {/* فوتر کارت */}
+                <div className="mt-auto border-t border-white/5 pt-4 flex items-center justify-between">
+                  <span className={`text-xs font-bold transition-colors ${partner.color}`}>
+                    مشاهده وب‌سایت
+                  </span>
+                  <div className="flex items-center gap-2 text-gray-600 group-hover:text-white transition-colors dir-ltr">
+                    <span className="text-xs font-mono hidden sm:inline-block tracking-wider opacity-50">{partner.url.replace('https://', '')}</span>
+                    <ExternalLink size={14} />
+                  </div>
                 </div>
-              </div>
-
-              {/* فوتر کارت */}
-              <div className="mt-auto border-t border-white/5 pt-4 flex items-center justify-between">
-                <span className={`text-xs font-bold transition-colors ${partner.color}`}>
-                  مشاهده وب‌سایت
-                </span>
-                <div className="flex items-center gap-2 text-gray-600 group-hover:text-white transition-colors dir-ltr">
-                  <span className="text-xs font-mono hidden sm:inline-block tracking-wider opacity-50">{partner.url.replace('https://', '')}</span>
-                  <ExternalLink size={14} />
-                </div>
-              </div>
-            </a>
-          ))}
+              </a>
+            );
+          })}
         </div>
       </div>
     </div>
