@@ -1,7 +1,6 @@
 "use client";
 
-import { Send, Heart, Library } from "lucide-react";
-import Link from "next/link";
+import { Send, Heart, Code2 } from "lucide-react";
 
 interface FooterProps {
   dict: any;
@@ -66,30 +65,58 @@ export default function Footer({ dict, lang }: FooterProps) {
         {/* بخش پایین: کپی‌رایت و لینک همکاران */}
         <div className="flex flex-col md:flex-row justify-between items-center gap-6">
           
-          {/* لوگو و لینک همکاران (Partners Link) */}
+          {/* لوگو */}
           <div className="flex items-center gap-4">
             <span className="text-lg font-bold text-white tracking-wider">
               Nexus<span className="text-[#14F195]">Solana</span>
             </span>
-            
-            {/* لینک مخفی پارتنرها */}
-            <Link 
-              href={`/${lang}/partners`}
-              title="Partners & Projects"
-              className="w-10 h-10 rounded-full bg-white/5 border border-white/10 flex items-center justify-center text-gray-500 hover:bg-[#14F195] hover:text-black transition-all opacity-60 hover:opacity-100 hover:scale-110"
-            >
-              <Library className="w-4 h-4" />
-            </Link>
+
+            {/* ⚠️ اصلاح مهم: لینک مخفی «Partners & Projects» که اینجا بود
+                (به /[lang]/partners) حذف شد. دلیل: بخشی از یک شبکه‌ی
+                لینک‌سازیِ متقابل بین چند سایت هم‌مالک بود که طبق دستورالعمل
+                رسمی گوگل (Link Schemes) ریسک افت رتبه یا نادیده‌گرفتن کل
+                شبکه توسط گوگل را داشت. صفحه‌ی app/[lang]/partners هم باید
+                کامل حذف شود؛ یک ریدایرکت ۳۰۱ در next.config.ts جایگزینش
+                شده تا کسی به خطای ۴۰۴ نخورد. */}
           </div>
 
-          {/* متن کپی‌رایت */}
-          <div className="text-center md:text-right space-y-2">
-            <p className="text-xs text-gray-500 font-mono" dir="ltr">
-              {t.copyright}
-            </p>
-            <div className="flex items-center justify-center md:justify-end gap-2 text-xs text-gray-600 font-mono" dir="ltr">
-              {t.tagline} <Heart className="h-3 w-3 text-red-500 fill-red-500 animate-pulse" />
+          {/* متن کپی‌رایت + امضای استاندارد کیادو */}
+          <div className="flex flex-col md:flex-row items-center gap-4">
+            <div className="text-center md:text-right space-y-2">
+              <p className="text-xs text-gray-500 font-mono" dir="ltr">
+                {t.copyright}
+              </p>
+              <div className="flex items-center justify-center md:justify-end gap-2 text-xs text-gray-600 font-mono" dir="ltr">
+                {t.tagline} <Heart className="h-3 w-3 text-red-500 fill-red-500 animate-pulse" />
+              </div>
             </div>
+
+            {/* --- امضای کیا دِو (KiyaDev Signature) ---
+                ⚠️ اضافه‌شده: این پروژه، برخلاف تمام پروژه‌های دیگر تیم، اصلاً
+                این نشان استاندارد را نداشت (تنها اشاره به kiyadev.ir در همان
+                صفحه‌ی /partners بود که به‌طور کامل حذف می‌شود). برای یکدستی
+                برند در کل مجموعه‌ی پروژه‌ها، همان الگوی دقیقِ استفاده‌شده در
+                بقیه‌ی سایت‌ها اینجا هم اضافه شد. */}
+            <a
+              href="https://kiyadev.ir"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="group flex items-center gap-3 bg-white/5 hover:bg-white border border-white/10 px-4 py-2 rounded-xl transition-all duration-300"
+            >
+              <div className="flex flex-col items-end">
+                <span className="text-[10px] text-gray-500 font-medium group-hover:text-gray-500">
+                  طراحی و مهندسی توسط
+                </span>
+                <span className="text-xs font-bold text-gray-300 group-hover:text-slate-900 flex items-center gap-1">
+                  KiyaDev Team
+                  <Code2 className="h-3 w-3 text-[#14F195] group-hover:text-emerald-600" />
+                </span>
+              </div>
+              <div className="h-8 w-8 bg-[#0B0F19] group-hover:bg-slate-100 rounded-lg flex items-center justify-center shadow-sm transition-colors border border-white/10 group-hover:border-transparent">
+                <Code2 className="h-4 w-4 text-gray-400 group-hover:text-slate-900" />
+              </div>
+            </a>
+            {/* -------------------------------------- */}
           </div>
 
         </div>
